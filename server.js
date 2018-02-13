@@ -11,7 +11,8 @@ app.use(express.static('./client/build/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // connect to the database and load models
-require('./models').connect(config.dbUri);
+// require('./models').connect(config.dbUri); // Use this if running locally. Replace dbUri with your mongodb link.
+require('./models').connect(process.env.MLAB_URL)// Use this if obtaining dbURI from Environmental Variable
 
 
 // load passport strategies
