@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
 const PORT = process.env.PORT || 10000;
-const path = require('path');
 
 const app = express();
 // tell the app to look for static files in these directories
@@ -31,9 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/api', authCheckMiddleware);
 
-app.get('*', (req, res) =>{
-  res.sendFile(path.resolve(__dirname, 'index.html'));
-});
+
 
 // start the server
 app.listen(PORT, () => {
